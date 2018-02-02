@@ -22,6 +22,7 @@ class CommentsListActivity: AppCompatActivity() {
 
         commentsListViewModel.comments.observe(this, Observer {
             if (it != null) {
+                Log.d(TAG, "Comments count=${it.size}")
                 //print all comments
                 it.forEach{
                     Log.d(TAG, it.toString())

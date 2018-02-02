@@ -1,6 +1,7 @@
 package com.kvest.simple_comments.data
 
 import android.arch.lifecycle.LiveData
+import com.kvest.simple_comments.firebase_helpers.AddValueListener
 import com.kvest.simple_comments.model.Comment
 import com.kvest.simple_comments.model.NewComment
 
@@ -10,6 +11,5 @@ import com.kvest.simple_comments.model.NewComment
 interface Repository {
     fun getComments(): LiveData<List<Comment>?>
     fun getComment(commentId: String): LiveData<Comment?>
-    //TODO
-    //fun addComment(comment: NewComment)
+    fun addComment(comment: NewComment, resultListener: AddValueListener)
 }
