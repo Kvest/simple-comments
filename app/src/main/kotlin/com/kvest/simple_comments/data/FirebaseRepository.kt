@@ -5,6 +5,7 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.kvest.simple_comments.firebase_helpers.AddValueListener
+import com.kvest.simple_comments.firebase_helpers.Deserializer
 import com.kvest.simple_comments.firebase_helpers.asLiveData
 import com.kvest.simple_comments.model.Comment
 import com.kvest.simple_comments.model.NewComment
@@ -39,4 +40,11 @@ class FirebaseRepository : Repository {
                 })
 
     }
+
+    override fun getLikes(deviceId: String): LiveData<Map<String, Int>?> =
+            FirebaseDatabase
+                    .getInstance()
+                    .getReference(PATH_LIKES)
+                    .child(deviceId)
+                    .asLiveData(Deserializer.ofMap(Int::class.java))
 }

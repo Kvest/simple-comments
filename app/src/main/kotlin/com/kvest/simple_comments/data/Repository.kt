@@ -12,4 +12,5 @@ interface Repository {
     fun getComments(): LiveData<List<Comment>?>
     fun getComment(commentId: String): LiveData<Comment?>
     fun addComment(comment: NewComment, resultListener: AddValueListener)
+    fun getLikes(deviceId: String): LiveData<Map<String, Int>?>
 }
